@@ -1,0 +1,135 @@
+<app-navbar-admin></app-navbar-admin>
+<div class="container-fluid py-5">
+  <div class="container py-5">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col">Số thứ tự</th>
+          <th scope="col">Họ Tên</th>
+          <th scope="col">Username</th>
+          <th scope="col">Email</th>
+          <th scope="col">Trạng thái</th>
+          <th scope="col">Hành động</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let item of users; index as i">
+<!--          <th scope="row">-->
+<!--            <div class="d-flex align-items-center">-->
+<!--              <img src="assets/img/vegetable-item-3.png" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">-->
+<!--            </div>-->
+<!--          </th>-->
+          <td>
+            <p class="mb-0 mt-4">{{i + 1}}</p>
+          </td>
+          <td>
+            <p class="mb-0 mt-4">{{item.firstName}} {{item.lastName}}</p>
+          </td>
+          <td>
+            <p class="mb-0 mt-4">{{item.username}}</p>
+          </td>
+          <td>
+            <p class="mb-0 mt-4">{{item.email}}</p>
+          </td>
+          <td>
+            <p class="mb-0 mt-4">2.99 $</p>
+          </td>
+          <td>
+            <button class="btn btn-md rounded-circle bg-light border mt-4" >
+              <i class="fa fa-times text-danger"></i>
+            </button>
+          </td>
+
+        </tr>
+        <tr>
+          <th scope="row">
+            <div class="d-flex align-items-center">
+              <img src="assets/img/vegetable-item-5.jpg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
+            </div>
+          </th>
+          <td>
+            <p class="mb-0 mt-4">Potatoes</p>
+          </td>
+          <td>
+            <p class="mb-0 mt-4">2.99 $</p>
+          </td>
+          <td>
+            <div class="input-group quantity mt-4" style="width: 100px;">
+              <div class="input-group-btn">
+                <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+              <div class="input-group-btn">
+                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="mb-0 mt-4">2.99 $</p>
+          </td>
+          <td>
+            <button class="btn btn-md rounded-circle bg-light border mt-4" >
+              <i class="fa fa-times text-danger"></i>
+            </button>
+          </td>
+        </tr>
+        <tr>
+          <th scope="row">
+            <div class="d-flex align-items-center">
+              <img src="assets/img/vegetable-item-2.jpg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
+            </div>
+          </th>
+          <td>
+            <p class="mb-0 mt-4">Awesome Brocoli</p>
+          </td>
+          <td>
+            <p class="mb-0 mt-4">2.99 $</p>
+          </td>
+          <td>
+            <div class="input-group quantity mt-4" style="width: 100px;">
+              <div class="input-group-btn">
+                <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
+                  <i class="fa fa-minus"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control form-control-sm text-center border-0" value="1">
+              <div class="input-group-btn">
+                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
+                  <i class="fa fa-plus"></i>
+                </button>
+              </div>
+            </div>
+          </td>
+          <td>
+            <p class="mb-0 mt-4">2.99 $</p>
+          </td>
+          <td>
+            <button class="btn btn-md rounded-circle bg-light border mt-4" >
+              <i class="fa fa-times text-danger"></i>
+            </button>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="col-12">
+        <div class="pagination d-flex justify-content-center mt-5">
+          <a href="#" class="rounded">&laquo;</a>
+          <a href="#" class="active rounded">1</a>
+          <a href="#" class="rounded">2</a>
+          <a href="#" class="rounded">3</a>
+          <a href="#" class="rounded">4</a>
+          <a href="#" class="rounded">5</a>
+          <a href="#" class="rounded">6</a>
+          <a href="#" class="rounded">&raquo;</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>
