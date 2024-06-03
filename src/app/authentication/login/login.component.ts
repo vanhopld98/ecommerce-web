@@ -3,7 +3,6 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {AlertService} from "../../service/alert.service";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../service/authentication.service";
-import {LoginResponse} from "../../model/loginResponse";
 import {HandleExceptionService} from "../../service/handle-exception.service";
 
 @Component({
@@ -61,8 +60,7 @@ export class LoginComponent implements OnInit {
         }
       },
       exception => {
-        console.log(exception)
-        this.handleException.handleException(exception);
+        throw exception;
       });
   }
 

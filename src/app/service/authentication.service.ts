@@ -91,6 +91,8 @@ export class AuthenticationService {
   }
 
   isAdmin(): boolean {
-    return this.currentUserValue.roles?.includes('ROLE_ADMIN') || false;
+    return this.currentUserValue?.roles?.includes('ROLE_ADMIN') || false;
   }
+
+
 }

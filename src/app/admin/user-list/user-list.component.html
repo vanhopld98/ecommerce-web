@@ -1,12 +1,11 @@
-<app-navbar-admin></app-navbar-admin>
 <div class="container-fluid py-5">
   <div class="container py-5">
     <div class="table-responsive">
-      <table class="table">
+      <table class="table table-bordered table-responsive border-secondary rounded-pill">
         <thead>
-        <tr>
+        <tr class="bg-primary text-white text-center">
           <th scope="col">Số thứ tự</th>
-          <th scope="col">Họ Tên</th>
+          <th scope="col">Họ và tên</th>
           <th scope="col">Username</th>
           <th scope="col">Email</th>
           <th scope="col">Trạng thái</th>
@@ -14,122 +13,67 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let item of users; index as i">
-<!--          <th scope="row">-->
-<!--            <div class="d-flex align-items-center">-->
-<!--              <img src="assets/img/vegetable-item-3.png" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="">-->
-<!--            </div>-->
-<!--          </th>-->
-          <td>
+        <tr *ngFor="let item of users; index as i" class="text-center">
+          <th class="text-primary">
             <p class="mb-0 mt-4">{{i + 1}}</p>
-          </td>
-          <td>
+          </th>
+          <td class="text-primary">
             <p class="mb-0 mt-4">{{item.firstName}} {{item.lastName}}</p>
           </td>
-          <td>
+          <td class="text-primary">
             <p class="mb-0 mt-4">{{item.username}}</p>
           </td>
-          <td>
+          <td class="text-primary">
             <p class="mb-0 mt-4">{{item.email}}</p>
           </td>
+          <ng-container *ngIf="item?.isActive">
+            <td>
+              <button class="btn border-secondary btn-md rounded-circle bg-primary border mt-4">
+                <i class="fas fa-check text-white"></i>
+              </button>
+            </td>
+          </ng-container>
+          <ng-container *ngIf="!item?.isActive">
+            <td>
+              <button class="btn border-secondary btn-md rounded-circle bg-danger border mt-4">
+                <i class="fa fa-times text-white"></i>
+              </button>
+            </td>
+          </ng-container>
           <td>
-            <p class="mb-0 mt-4">2.99 $</p>
-          </td>
-          <td>
-            <button class="btn btn-md rounded-circle bg-light border mt-4" >
-              <i class="fa fa-times text-danger"></i>
-            </button>
-          </td>
-
-        </tr>
-        <tr>
-          <th scope="row">
-            <div class="d-flex align-items-center">
-              <img src="assets/img/vegetable-item-5.jpg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
-            </div>
-          </th>
-          <td>
-            <p class="mb-0 mt-4">Potatoes</p>
-          </td>
-          <td>
-            <p class="mb-0 mt-4">2.99 $</p>
-          </td>
-          <td>
-            <div class="input-group quantity mt-4" style="width: 100px;">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                  <i class="fa fa-minus"></i>
-                </button>
+            <div class="row justify-content-center">
+              <div class="col-6 justify-content-center">
+                <a routerLink="/admin/user/{{item?.keycloakId}}/edit">
+                  <button class="btn border-secondary text-white btn-warning rounded-circle bg-gradient border mt-4">
+                    <i class="fa fal fa-eye"></i>
+                  </button>
+                </a>
               </div>
-              <input type="text" class="form-control form-control-sm text-center border-0" value="1">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                  <i class="fa fa-plus"></i>
-                </button>
+              <div class="col-6 justify-content-center">
+                <a routerLink="/admin/user/{{item?.keycloakId}}/detail">
+                  <button class="btn border-secondary text-white btn-warning rounded-circle bg-gradient border mt-4">
+                    <i class="fa fas fa-pen"></i>
+                  </button>
+                </a>
               </div>
             </div>
-          </td>
-          <td>
-            <p class="mb-0 mt-4">2.99 $</p>
-          </td>
-          <td>
-            <button class="btn btn-md rounded-circle bg-light border mt-4" >
-              <i class="fa fa-times text-danger"></i>
-            </button>
-          </td>
-        </tr>
-        <tr>
-          <th scope="row">
-            <div class="d-flex align-items-center">
-              <img src="assets/img/vegetable-item-2.jpg" class="img-fluid me-5 rounded-circle" style="width: 80px; height: 80px;" alt="" alt="">
-            </div>
-          </th>
-          <td>
-            <p class="mb-0 mt-4">Awesome Brocoli</p>
-          </td>
-          <td>
-            <p class="mb-0 mt-4">2.99 $</p>
-          </td>
-          <td>
-            <div class="input-group quantity mt-4" style="width: 100px;">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-minus rounded-circle bg-light border" >
-                  <i class="fa fa-minus"></i>
-                </button>
-              </div>
-              <input type="text" class="form-control form-control-sm text-center border-0" value="1">
-              <div class="input-group-btn">
-                <button class="btn btn-sm btn-plus rounded-circle bg-light border">
-                  <i class="fa fa-plus"></i>
-                </button>
-              </div>
-            </div>
-          </td>
-          <td>
-            <p class="mb-0 mt-4">2.99 $</p>
-          </td>
-          <td>
-            <button class="btn btn-md rounded-circle bg-light border mt-4" >
-              <i class="fa fa-times text-danger"></i>
-            </button>
           </td>
         </tr>
         </tbody>
       </table>
-      <div class="col-12">
-        <div class="pagination d-flex justify-content-center mt-5">
-          <a href="#" class="rounded">&laquo;</a>
-          <a href="#" class="active rounded">1</a>
-          <a href="#" class="rounded">2</a>
-          <a href="#" class="rounded">3</a>
-          <a href="#" class="rounded">4</a>
-          <a href="#" class="rounded">5</a>
-          <a href="#" class="rounded">6</a>
-          <a href="#" class="rounded">&raquo;</a>
-        </div>
-      </div>
-
+<!--      <div class="pagination d-flex justify-content-center mt-5">-->
+<!--        <a *ngFor="let pageNumber of pageNumbers"-->
+<!--          [ngClass]="{ 'active': pageNumber === page + 1, 'rounded': true }"-->
+<!--          (click)="handlePageChange(pageNumber)">-->
+<!--          {{ pageNumber }}-->
+<!--        </a>-->
+        <app-pagination
+          [totalItems]="totalElements"
+          [itemsPerPage]="pageSize"
+          [currentPage]="pageIndex"
+          (pageChange)="handlePageChange($event)">
+        </app-pagination>
+<!--      </div>-->
     </div>
-  </div>
 </div>
-<app-footer></app-footer>
+</div>

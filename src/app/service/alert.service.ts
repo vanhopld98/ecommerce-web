@@ -32,7 +32,7 @@ export class AlertService implements OnInit {
       title: message,
       showConfirmButton: false,
       timerProgressBar: true,
-      timer: 2000
+      timer: 3000
     });
   }
 }

@@ -10,7 +10,7 @@ import {AuthenticationService} from "../../service/authentication.service";
 export class NavbarComponent implements OnInit {
 
   isFixedTop: boolean = true; // Mặc định giữ nguyên class fixed-top
-  excludedUrls: string[] = ['/login', '/register'];
+  excludedUrls: string[] = ['/login', '/register', '/register/verify'];
   isAdmin: boolean = false;
 
   constructor(private router: Router,
