@@ -43,14 +43,14 @@
           <td>
             <div class="row justify-content-center">
               <div class="col-6 justify-content-center">
-                <a routerLink="/admin/user/{{item?.keycloakId}}/edit">
+                <a routerLink="/admin/user/{{item?.keycloakId}}/detail">
                   <button class="btn border-secondary text-white btn-warning rounded-circle bg-gradient border mt-4">
                     <i class="fa fal fa-eye"></i>
                   </button>
                 </a>
               </div>
               <div class="col-6 justify-content-center">
-                <a routerLink="/admin/user/{{item?.keycloakId}}/detail">
+                <a routerLink="/admin/user/{{item?.keycloakId}}/edit">
                   <button class="btn border-secondary text-white btn-warning rounded-circle bg-gradient border mt-4">
                     <i class="fa fas fa-pen"></i>
                   </button>
@@ -61,19 +61,12 @@
         </tr>
         </tbody>
       </table>
-<!--      <div class="pagination d-flex justify-content-center mt-5">-->
-<!--        <a *ngFor="let pageNumber of pageNumbers"-->
-<!--          [ngClass]="{ 'active': pageNumber === page + 1, 'rounded': true }"-->
-<!--          (click)="handlePageChange(pageNumber)">-->
-<!--          {{ pageNumber }}-->
-<!--        </a>-->
-        <app-pagination
-          [totalItems]="totalElements"
-          [itemsPerPage]="pageSize"
-          [currentPage]="pageIndex"
-          (pageChange)="handlePageChange($event)">
-        </app-pagination>
-<!--      </div>-->
     </div>
+    <app-pagination
+      [totalItems]="totalElements"
+      [itemsPerPage]="pageSize"
+      [currentPage]="pageIndex + 1"
+      (pageChange)="handlePageChange($event)">
+    </app-pagination>
 </div>
 </div>
