@@ -9,8 +9,8 @@ import {AuthenticationService} from "../../service/authentication.service";
 })
 export class NavbarComponent implements OnInit {
 
-  isFixedTop: boolean = true; // Mặc định giữ nguyên class fixed-top
-  excludedUrls: string[] = ['/login', '/register', '/register/verify'];
+  isFixedTop: boolean = true;
+  excludedUrls: string[] = ['/authentication/login', '/authentication/register', '/authentication/register/verify', '/not-found'];
   isAdmin: boolean = false;
 
   constructor(private router: Router,
@@ -20,10 +20,10 @@ export class NavbarComponent implements OnInit {
         this.isFixedTop = !this.excludedUrls.includes(this.router.url);
       }
     });
-    this.isAdmin = authenticationService.isAdmin();
   }
 
   ngOnInit(): void {
+    this.isAdmin = this.authenticationService.isAdmin();
   }
 
 }

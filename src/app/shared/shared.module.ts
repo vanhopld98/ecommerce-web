@@ -6,6 +6,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 import { PaginationComponent } from './pagination/pagination.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { PaginationComponent } from './pagination/pagination.component';
     FooterComponent,
     NavbarAdminComponent,
     PaginationComponent,
+    NotFoundComponent,
   ],
   exports: [
     NavbarComponent,

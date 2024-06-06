@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
       response => {
         /* Nếu người dùng ko có role thì không cho đăng nhập */
         if (!response.roles || response.roles.length === 0) {
-          this.router.navigateByUrl('/login')
+          this.router.navigateByUrl('/authentication/login')
           this.alertService.alertError('Bạn không có quyền truy cập chức năng này. Vui lòng đăng nhập lại')
           return;
         }
@@ -54,7 +54,7 @@ export class LoginComponent implements OnInit {
         } else if (response.roles.includes('ROLE_USER')) {
           this.router.navigateByUrl('/');
         } else {
-          this.router.navigateByUrl('/login')
+          this.router.navigateByUrl('/authentication/login')
           this.alertService.alertError('Bạn không có quyền truy cập chức năng này. Vui lòng đăng nhập lại')
           return;
         }

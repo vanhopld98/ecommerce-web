@@ -18,13 +18,13 @@ export class UserGuard {
   canActivate(): | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const currentUser = this.authenticationService.currentUserValue;
     if (currentUser == null) {
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/authentication/login');
       this.alert.alertError('Vui lòng đăng nhập để thực hiện chức năng này!')
       return false;
     }
     const roles = currentUser.roles;
     if (!roles?.includes('ROLE_USER')) {
-      this.router.navigateByUrl('/login');
+      this.router.navigateByUrl('/authentication/login');
       this.alert.alertError('Vui lòng đăng nhập để thực hiện chức năng này!')
       return false;
     }
