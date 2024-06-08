@@ -1,0 +1,88 @@
+<div class="container-fluid py-5">
+  <div class="container py-5">
+    <div class="card border">
+      <div class="card-header">
+        <div class="card-title">
+          <h3 class="text-primary display-9 p-2">Danh sách người dùng</h3>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-bordered table-responsive border-secondary rounded-pill">
+            <thead>
+            <tr class="bg-primary text-white text-center">
+              <th scope="col">STT</th>
+              <th scope="col">Họ và tên</th>
+              <th scope="col">Username</th>
+              <th scope="col">Email</th>
+              <th scope="col">Trạng thái</th>
+              <th scope="col">Hành động</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngIf="products.length === 0" class="border-secondary text-primary text-center">
+              <th colspan="6" class="display-6">Không có dữ liệu</th>
+            </tr>
+            <tr *ngFor="let item of products; index as i" class="text-center">
+              <th class="text-primary">
+                <p class="mb-0 mt-4">{{i + 1}}</p>
+              </th>
+              <td class="text-primary">
+                <p class="mb-0 mt-4">{{item.firstName}} {{item.lastName}}</p>
+              </td>
+              <td class="text-primary">
+                <p class="mb-0 mt-4">{{item.username}}</p>
+              </td>
+              <td class="text-primary">
+                <p class="mb-0 mt-4">{{item.email}}</p>
+              </td>
+              <ng-container *ngIf="item?.isActive">
+                <td>
+                  <button class="btn border-primary btn-md rounded-circle bg-primary border mt-4">
+                    <i class="fas fa-check text-white"></i>
+                  </button>
+                </td>
+              </ng-container>
+              <ng-container *ngIf="!item?.isActive">
+                <td>
+                  <button class="btn border-secondary btn-md rounded-circle bg-danger border mt-4">
+                    <i class="fa fa-times text-white"></i>
+                  </button>
+                </td>
+              </ng-container>
+              <td>
+                <div class="row justify-content-center">
+                  <div class="col-6 justify-content-center">
+                    <a routerLink="/admin/user/{{item?.keycloakId}}/detail">
+                      <button
+                        class="btn border-secondary text-white btn-warning rounded-circle bg-gradient border mt-4">
+                        <i class="fa fal fa-eye"></i>
+                      </button>
+                    </a>
+                  </div>
+                  <div class="col-6 justify-content-center">
+                    <a routerLink="/admin/user/{{item?.keycloakId}}/edit">
+                      <button
+                        class="btn border-secondary text-white btn-warning rounded-circle bg-gradient border mt-4">
+                        <i class="fa fas fa-pen"></i>
+                      </button>
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer">
+        <app-pagination
+          [totalItems]="totalElements"
+          [itemsPerPage]="pageSize"
+          [currentPage]="pageIndex + 1"
+          (pageChange)="handlePageChange($event)">
+        </app-pagination>
+      </div>
+    </div>
+  </div>
+</div>

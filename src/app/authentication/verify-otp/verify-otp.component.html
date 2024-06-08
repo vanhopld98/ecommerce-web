@@ -4,11 +4,11 @@
     <div class="row justify-content-center">
       <div class="col-lg-6">
         <h1 class="display-1 text-center text-primary">Đăng ký</h1>
-        <form>
+        <form [formGroup]="formVerifyOTP" (ngSubmit)="register()">
           <div>
             <div class="form-item w-100">
               <div>
-                <label class="form-label my-3">Mã xác thực đã được gửi về địa chỉ email: </label>
+                <label class="form-label my-3">Mã xác thực đã được gửi về địa chỉ email: {{email}}</label>
               </div>
               <label class="form-label my-3">Vui lòng điền mã xác thực </label>
               <input type="text" formControlName="otp" class="form-control p-3">

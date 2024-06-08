@@ -1,18 +1,4 @@
-<!--<div class="pagination d-flex justify-content-center mt-5">-->
-<!--  <div *ngIf="totalPages > 1">-->
-<!--    <a [class.disabled]="currentPage === 1" (click)="onPageChange(1)">-->
-<!--      <a>&laquo;</a>-->
-<!--    </a>-->
-<!--    <a *ngFor="let page of pages" [ngClass]="{ 'active': currentPage === page, 'rounded': true }" (click)="onPageChange(page)" [class.disabled]="page === -1">-->
-<!--      <a *ngIf="page !== -1">{{ page }}</a>-->
-<!--      <a *ngIf="page === -1">...</a>-->
-<!--    </a>-->
-<!--    <a [class.disabled]="currentPage === totalPages" (click)="onPageChange(totalPages)">-->
-<!--      <a>&raquo;</a>-->
-<!--    </a>-->
-<!--  </div>-->
-<!--</div>-->
-<div class="pagination d-flex justify-content-center mt-5">
+<div class="pagination d-flex justify-content-center">
   <a (click)="onPageChange(currentPage - 1)" class="rounded">&laquo;</a>
   <a *ngFor="let page of pages" [ngClass]="{ 'active': page === currentPage, 'rounded': true }"
      (click)="onPageChange(page)">

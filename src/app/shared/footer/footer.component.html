@@ -5,14 +5,10 @@
         <div class="col-lg-3">
           <a href="#">
             <h1 class="text-primary mb-0">Ecommerce</h1>
-            <p class="text-secondary mb-0">Fresh products</p>
+            <p class="text-secondary mb-0">Sản phẩm tươi</p>
           </a>
         </div>
         <div class="col-lg-6">
-<!--          <div class="position-relative mx-auto">-->
-<!--            <input class="form-control border-0 w-100 py-3 px-4 rounded-pill" type="email" placeholder="Địa chỉ email của bạn">-->
-<!--            <a routerLink="/register" class="btn btn-primary border-0 border-secondary py-3 px-4 position-absolute rounded-pill text-white" style="top: 0; right: 0;">Đăng ký ngay</a>-->
-<!--          </div>-->
         </div>
         <div class="col-lg-3">
           <div class="d-flex justify-content-end pt-3">
@@ -35,21 +31,21 @@
       </div>
       <div class="col-lg-3 col-md-6">
         <div class="d-flex flex-column text-start footer-item">
-          <h4 class="text-light mb-3">Shop Info</h4>
-          <a class="btn-link" href="">About Us</a>
-          <a class="btn-link" href="">Contact Us</a>
-          <a class="btn-link" href="">Privacy Policy</a>
-          <a class="btn-link" href="">Terms & Condition</a>
-          <a class="btn-link" href="">Return Policy</a>
-          <a class="btn-link" href="">FAQs & Help</a>
+          <h4 class="text-light mb-3">Thông tin cửa hàng</h4>
+          <a class="btn-link" href="">Về chúng tôi</a>
+          <a class="btn-link" href="">Liên hệ chúng tôi</a>
+          <a class="btn-link" href="">Chính sách bảo mật</a>
+          <a class="btn-link" href="">Điều khoản & Điều kiện</a>
+          <a class="btn-link" href="">Chính sách hoàn trả</a>
+          <a class="btn-link" href="">Câu hỏi thường gặp và trợ giúp</a>
         </div>
       </div>
       <div class="col-lg-3 col-md-6">
         <div class="d-flex flex-column text-start footer-item">
           <h4 class="text-light mb-3">Tài khoản</h4>
           <a class="btn-link" href="">Tài khoản của tôi</a>
-          <a class="btn-link" href="">Shop details</a>
-          <a class="btn-link" href="">Giỏ hàng</a>
+          <a class="btn-link" routerLink="/shop">Shop details</a>
+          <a class="btn-link" routerLink="/cart">Giỏ hàng</a>
           <a class="btn-link" href="">Danh sách yêu thích</a>
           <a class="btn-link" href="">Lịch sử giao dịch</a>
           <a class="btn-link" href="">Đơn đặt hàng quốc tế</a>
@@ -74,13 +70,7 @@
       <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
         <span class="text-light"><a href="#"><i class="fas fa-copyright text-light me-2"></i>Ecommerce</a>, All right reserved.</span>
       </div>
-<!--      <div class="col-md-6 my-auto text-center text-md-end text-white">-->
-<!--        &lt;!&ndash;/*** This template is free as long as you keep the below author’s credit link/attribution link/backlink. ***/&ndash;&gt;-->
-<!--        &lt;!&ndash;/*** If you'd like to use the template without the below author’s credit link/attribution link/backlink, ***/&ndash;&gt;-->
-<!--        &lt;!&ndash;/*** you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". ***/&ndash;&gt;-->
-<!--        Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a> Distributed By <a class="border-bottom" href="https://themewagon.com">ThemeWagon</a>-->
-<!--      </div>-->
     </div>
   </div>
 </div>
-<a href="#" class="btn btn-primary border-3 border-primary rounded-circle back-to-top"><i class="fa fa-arrow-up"></i></a>
+<button class="btn btn-primary border-3 border-primary rounded-circle back-to-top" (click)="scrollToTop($event)"><i class="fa fa-arrow-up"></i></button>

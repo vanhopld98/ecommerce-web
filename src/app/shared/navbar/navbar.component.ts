@@ -12,6 +12,8 @@ export class NavbarComponent implements OnInit {
   isFixedTop: boolean = true;
   excludedUrls: string[] = ['/authentication/login', '/authentication/register', '/authentication/register/verify', '/not-found'];
   isAdmin: boolean = false;
+  fullName: string = '';
+  isLogin: boolean = false;
 
   constructor(private router: Router,
               private authenticationService: AuthenticationService) {
@@ -20,10 +22,20 @@ export class NavbarComponent implements OnInit {
         this.isFixedTop = !this.excludedUrls.includes(this.router.url);
       }
     });
+    this.checkLogin();
   }
 
   ngOnInit(): void {
     this.isAdmin = this.authenticationService.isAdmin();
   }
 
+  /* !!null -> false */
+  checkLogin() {
+    this.isLogin = !!this.authenticationService.currentUserValue;
+  }
+
+  logout() {
+    this.isLogin = !this.isLogin;
+    return this.authenticationService.logout('/');
+  }
 }

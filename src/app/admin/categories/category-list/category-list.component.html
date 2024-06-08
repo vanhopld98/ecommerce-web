@@ -1,0 +1,122 @@
+<div class="container-fluid py-5">
+  <div class="container py-5">
+    <div class="card border">
+      <div class="card-header">
+        <div class="card-title d-flex justify-content-between align-items-center">
+          <h3 class="text-primary display-9">Danh sách loại sản phẩm</h3>
+          <a routerLink="/admin/category/create" class="btn border-secondary btn-primary text-white">Thêm mới</a>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <!--          <table class="table table-bordered table-responsive border-secondary rounded-pill">-->
+          <!--            <thead>-->
+          <!--            <tr class="bg-primary text-white text-center">-->
+          <!--              <th scope="col">STT</th>-->
+          <!--              <th scope="col">Tên loại sản phẩm</th>-->
+          <!--              <th scope="col">Trạng thái</th>-->
+          <!--              <th scope="col">Hành động</th>-->
+          <!--            </tr>-->
+          <!--            </thead>-->
+          <!--            <tbody>-->
+          <!--            <tr *ngIf="categories.length === 0" class="border-secondary text-primary text-center">-->
+          <!--              <th colspan="6">-->
+          <!--                Không có dữ liệu-->
+          <!--              </th>-->
+          <!--            </tr>-->
+          <!--            <tr *ngFor="let item of categories; index as i" class="text-center">-->
+          <!--              <th class="text-primary">-->
+          <!--                <p class="mb-0 mt-4">{{i + 1}}</p>-->
+          <!--              </th>-->
+          <!--              <td class="text-primary">-->
+          <!--                <p class="mb-0 mt-4">{{item?.name}}</p>-->
+          <!--              </td>-->
+          <!--              <ng-container *ngIf="item?.active">-->
+          <!--                <td>-->
+          <!--                  <button class="btn border-primary btn-md rounded-circle bg-primary border mt-4">-->
+          <!--                    <i class="fas fa-check text-white"></i>-->
+          <!--                  </button>-->
+          <!--                </td>-->
+          <!--              </ng-container>-->
+          <!--              <ng-container *ngIf="!item?.active">-->
+          <!--                <td>-->
+          <!--                  <button class="btn border-secondary btn-md rounded-circle bg-danger border mt-4">-->
+          <!--                    <i class="fa fa-times text-white"></i>-->
+          <!--                  </button>-->
+          <!--                </td>-->
+          <!--              </ng-container>-->
+          <!--              <td>-->
+          <!--                <div class="row justify-content-center">-->
+          <!--                  <div class="col-6 justify-content-center">-->
+          <!--                    <a routerLink="/admin/user/">-->
+          <!--                      <button-->
+          <!--                        class="btn border-secondary text-white btn-warning rounded-circle bg-gradient border mt-4">-->
+          <!--                        <i class="fa fal fa-eye"></i>-->
+          <!--                      </button>-->
+          <!--                    </a>-->
+          <!--                  </div>-->
+          <!--                  <div class="col-6 justify-content-center">-->
+          <!--                    <a routerLink="/admin/user/">-->
+          <!--                      <button-->
+          <!--                        class="btn border-secondary text-white btn-warning rounded-circle bg-gradient border mt-4">-->
+          <!--                        <i class="fa fas fa-pen"></i>-->
+          <!--                      </button>-->
+          <!--                    </a>-->
+          <!--                  </div>-->
+          <!--                </div>-->
+          <!--              </td>-->
+          <!--            </tr>-->
+          <!--            </tbody>-->
+          <!--          </table>-->
+          <table class="table table-hover table-responsive table-bordered text-center">
+            <thead>
+            <tr>
+              <th scope="col">STT</th>
+              <th scope="col">Tên loại sảm phẩm</th>
+              <th scope="col">Trạng thái</th>
+              <th scope="col">Thời gian tạo</th>
+              <th scope="col">Hành động</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of categories; index as i" routerLink="/admin/category/{{item?.id}}">
+              <th scope="row">
+                  <p class="mb-0 mt-4">{{i + 1}}</p>
+              </th>
+              <td>
+                  <p class="mb-0 mt-4">{{item?.name}}</p>
+              </td>
+              <td>
+                <ng-container *ngIf="item?.active">
+                    <button class="btn btn-md rounded-circle bg-white border mt-4 border-primary">
+                      <i class="fas fa-check text-primary "></i>
+                    </button>
+                </ng-container>
+                <ng-container *ngIf="!item?.active">
+                    <button class="btn btn-md rounded-circle bg-white border mt-4 border-danger">
+                      <i class="fa fa-times text-danger"></i>
+                    </button>
+                </ng-container>
+              </td>
+              <td>
+                <p class="mb-0 mt-4">{{item?.createdAt | date: 'dd/MM/yyyy HH:mm:ss'}}</p>
+              </td>
+              <td>
+                <p class="mb-0 mt-4">2.99 $</p>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer">
+        <app-pagination
+          [totalItems]="totalElements"
+          [itemsPerPage]="pageSize"
+          [currentPage]="pageIndex + 1"
+          (pageChange)="handlePageChange($event)">
+        </app-pagination>
+      </div>
+    </div>
+  </div>
+</div>

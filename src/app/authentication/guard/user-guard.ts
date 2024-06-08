@@ -17,6 +17,7 @@ export class UserGuard {
 
   canActivate(): | Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
     const currentUser = this.authenticationService.currentUserValue;
+    console.log(currentUser)
     if (currentUser == null) {
       this.router.navigateByUrl('/authentication/login');
       this.alert.alertError('Vui lòng đăng nhập để thực hiện chức năng này!')

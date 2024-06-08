@@ -16,6 +16,7 @@ import {LoginResponse} from "../../model/loginResponse";
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
 
+  private isRefresh: boolean = false;
   constructor(private alertService: AlertService,
               private authenticationService: AuthenticationService,
               private router: Router) {
@@ -31,29 +32,31 @@ export class ErrorInterceptor implements HttpInterceptor {
       catchError((err: any) => {
         if (err instanceof HttpErrorResponse) {
           if (err.status === 401) {
-            if (this.authenticationService.currentUserValue) {
+            if (this.authenticationService.currentUserValue && !this.isRefresh) {
+              this.isRefresh = true;
               // Làm mới token
               console.log('Làm mới token');
               return this.authenticationService.refresh().pipe(
                 switchMap((response: LoginResponse) => {
                   // Sau khi làm mới token, gọi lại API với token mới
+                  this.isRefresh = false;
                   const clonedRequest = this.addTokenHeader(req, response?.accessToken || '');
                   return next.handle(clonedRequest);
                 }),
                 catchError(refreshError => {
+                  console.log('----err', refreshError)
                   // Nếu làm mới token thất bại, xử lý logout
-                  sessionStorage.clear();
-                  this.authenticationService.logout();
+                  this.isRefresh = false;
+                  localStorage.clear();
+                  this.authenticationService.logout('/authentication/login');
                   this.alertService.alertError('Bạn cần đăng nhập trước khi tiếp tục');
-                  this.router.navigateByUrl('/authentication/login');
                   return throwError(refreshError);
                 })
               );
             } else {
-              sessionStorage.clear();
-              this.authenticationService.logout();
+              localStorage.clear();
+              this.authenticationService.logout('/authentication/login');
               this.alertService.alertError('Bạn cần đăng nhập trước khi tiếp tục');
-              this.router.navigateByUrl('/authentication/login');
             }
           } else if (err.status === 403) {
             this.alertService.alertError('Bạn không có quyền truy cập vào trang này');

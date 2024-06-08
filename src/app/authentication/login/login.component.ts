@@ -3,7 +3,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 import {AlertService} from "../../service/alert.service";
 import {Router} from "@angular/router";
 import {AuthenticationService} from "../../service/authentication.service";
-import {HandleExceptionService} from "../../service/handle-exception.service";
+import {LoadingService} from "../../service/loading.service";
 
 @Component({
   selector: 'app-login',
@@ -24,10 +24,11 @@ export class LoginComponent implements OnInit {
   constructor(private alertService: AlertService,
               private router: Router,
               private authenticationService: AuthenticationService,
-              private handleException: HandleExceptionService) {
+              private loadingService: LoadingService) {
   }
 
   login() {
+    this.loadingService.show();
     this.submitted = true;
 
     if (this.formLogin.invalid) {
@@ -47,12 +48,16 @@ export class LoginComponent implements OnInit {
           this.alertService.alertError('Bạn không có quyền truy cập chức năng này. Vui lòng đăng nhập lại')
           return;
         }
-        this.alertService.alertSuccess("Đăng nhập thành công")
         if (response.roles.includes('ROLE_ADMIN')) {
-          this.router.navigateByUrl('/admin');
+          this.loadingService.hideWithCallback(() => {
+            this.router.navigateByUrl('/admin');
+            this.alertService.alertSuccess("Đăng nhập thành công")
+          }, 500);
           return;
         } else if (response.roles.includes('ROLE_USER')) {
           this.router.navigateByUrl('/');
+          this.loadingService.hide();
+          return;
         } else {
           this.router.navigateByUrl('/authentication/login')
           this.alertService.alertError('Bạn không có quyền truy cập chức năng này. Vui lòng đăng nhập lại')

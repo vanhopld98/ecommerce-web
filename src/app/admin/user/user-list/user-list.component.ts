@@ -1,7 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {AdminServiceService} from "../../service/admin-service.service";
-import {UserResponse} from "../../model/user-response";
-import {catchError, tap} from "rxjs";
+import {AdminService} from "../../../service/admin.service";
+import {UserResponse} from "../../../model/user-response";
+import {catchError, finalize, tap} from "rxjs";
+import {LoadingService} from "../../../service/loading.service";
 
 @Component({
   selector: 'app-user-list',
@@ -11,14 +12,13 @@ import {catchError, tap} from "rxjs";
 export class UserListComponent implements OnInit {
 
   pageIndex = 0;
-  pageSize = 2;
+  pageSize = 10;
   page = 1;
-  pageNumbers: number[] = [];
   public users: UserResponse[] = [];
-  totalPages = 0;
   totalElements: number = 0;
 
-  constructor(private adminService: AdminServiceService) {
+  constructor(private adminService: AdminService,
+              private loadingService: LoadingService) {
   }
 
   ngOnInit(): void {
@@ -31,15 +31,16 @@ export class UserListComponent implements OnInit {
   }
 
   getUsers(page: number) {
+    this.loadingService.show();
     this.adminService.getUsers(page, this.pageSize,).pipe(
       tap(res => {
         this.users = [...res.userProfiles as UserResponse[]] || [];
         this.totalElements = res?.total || 0;
-        this.totalPages = res.total !== undefined ? Math.ceil(res.total / this.pageSize) : 0;
-        this.pageNumbers = Array.from({length: this.totalPages}, (_, i) => i + 1);
       }),
       catchError(err => {
         throw err;
+      }), finalize(() => {
+        this.loadingService.hide();
       })
     ).subscribe();
   }

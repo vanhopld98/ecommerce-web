@@ -7,6 +7,7 @@ import { FooterComponent } from './footer/footer.component';
 import { NavbarAdminComponent } from './navbar-admin/navbar-admin.component';
 import { PaginationComponent } from './pagination/pagination.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -15,13 +16,15 @@ import { NotFoundComponent } from './not-found/not-found.component';
     NavbarAdminComponent,
     PaginationComponent,
     NotFoundComponent,
+    LoadingComponent,
   ],
-  exports: [
-    NavbarComponent,
-    FooterComponent,
-    NavbarAdminComponent,
-    PaginationComponent
-  ],
+    exports: [
+        NavbarComponent,
+        FooterComponent,
+        NavbarAdminComponent,
+        PaginationComponent,
+        LoadingComponent
+    ],
   imports: [
     CommonModule,
     SharedRoutingModule
